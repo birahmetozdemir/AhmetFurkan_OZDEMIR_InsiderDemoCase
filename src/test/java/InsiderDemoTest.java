@@ -10,7 +10,7 @@ import org.junit.Test;
 public class InsiderDemoTest {
 
     @Test
-    public void test(){
+    public void test() throws InterruptedException {
 
         WebDriver driver = WebDriverBuild.buildDriver();
         driver.get("https://useinsider.com/");
@@ -27,7 +27,6 @@ public class InsiderDemoTest {
 
         FindJobsPage findJobsPage = new FindJobsPage(driver);
         findJobsPage.allFilters();
-        findJobsPage.filteredQAList();
 
         ApplicationFormPage applicationFormPage = new ApplicationFormPage(driver);
         applicationFormPage.connectApplicationFormTab();

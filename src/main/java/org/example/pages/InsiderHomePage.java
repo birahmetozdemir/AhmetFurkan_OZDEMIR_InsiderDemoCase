@@ -1,6 +1,7 @@
 package org.example.pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 
 public class InsiderHomePage {
@@ -9,6 +10,7 @@ public class InsiderHomePage {
 
     //Locator and Xpath
     public By mainPageVerificationElement = By.xpath("//span[contains(text(),'Insider')]");
+    public By acceptCookiesButton = By.xpath("//a[text()='Accept All']");
     public By companyDropdownMainMenu = By.xpath("//a[@id='navbarDropdownMenuLink' and contains(text(),'Company')]");
     public By careersSubMenu = By.xpath("//a[text()='Careers']");
 
@@ -21,6 +23,15 @@ public class InsiderHomePage {
     public void verificationMainPage(){
 
         driver.findElement(mainPageVerificationElement).isDisplayed();
+
+        try {
+
+            driver.findElement(acceptCookiesButton).click();
+        }
+        catch (NoSuchElementException e){
+
+            System.out.println("Cookie frame closed");
+        }
     }
 
     //Verification Page Title
